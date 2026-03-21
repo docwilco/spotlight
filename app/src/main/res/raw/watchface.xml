@@ -63,7 +63,13 @@
 
     <Scene backgroundColor="#ff000000">
 
-        <!-- Virtual clock group: 946x946, translated for spotlight effect -->
+        <!-- Virtual clock group: 946x946, translated for spotlight effect.
+             The virtual clock is 2.1x larger than the screen (zoom factor).
+             The transform converts time to an angle in degrees:
+               angle = (hours*3600 + minutes*60 + seconds) / 120
+             where 120 = 43200 total seconds in 12 hours / 360 degrees.
+             The focal point (0.8 * clock_radius = 378) follows the hour
+             hand position, creating the spotlight panning effect. -->
         <Group x="0" y="0" width="946" height="946">
             <Transform target="x" value="-248.0 - 378.0 * sin(([HOUR_0_11] * 3600 + [MINUTE] * 60 + [SECOND]) / 120)" />
             <Transform target="y" value="-248.0 + 378.0 * cos(([HOUR_0_11] * 3600 + [MINUTE] * 60 + [SECOND]) / 120)" />
