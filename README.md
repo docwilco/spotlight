@@ -1,17 +1,40 @@
-# Spotlight watch face for Garmin devices
+# Spotlight watch face for Wear OS
 
-This is a clone from the Android watch face [Spotlight](https://play.google.com/store/apps/details?id=com.maize.spotlight) by Maize wich is an implementation of this original idea by [Konstantin Pulyarkin](http://hop-picker.tumblr.com/post/51065757240):
+This is an implementation of the watch face concept by [Konstantin Pulyarkin](http://hop-picker.tumblr.com/post/51065757240) for Wear OS using [Watch Face Format 2](https://developer.android.com/training/wearables/wff):
 
 ![Watch](images/original_idea.gif)
 
-There are multiple implementations for this watch face for Android and Garmin but the Garmin version ([Zoomface](https://apps.garmin.com/en-US/apps/15d521ab-e562-4fde-a708-852102025a75)) that i found isn't compatible with the Garmin Venu.
+The watch face displays an animated "spotlight" zoom effect: a magnified section of a virtual clock dial, with the focal point following the hour hand position.
 
-I really wanted to have this watch face for my Venu so i tried to create it myself. At a certain moment i got stuck and then [docwilco](https://github.com/docwilco) basically took over :)
+## Supported Devices
 
-This is the result:
+This watch face targets **Watch Face Format 2** (WFF 2) and requires **Wear OS 5** (API 34+). Compatible devices include:
+
+- **Google Pixel Watch** (original, with Wear OS 5 update)
+- **Google Pixel Watch 2**
+- **Google Pixel Watch 3**
+- **Samsung Galaxy Watch 4/5/6/7** (with Wear OS 5 update)
+- **Samsung Galaxy Watch FE**
+- Other Wear OS 5+ devices
+
+## Customization
+
+The watch face supports customization through the watch face editor:
+
+- **Hour Line Color**: Red, Blue, Green, White, Yellow, Cyan, Magenta, Orange
+- **Hash Mark Color**: White, Light Gray, Blue, Green, Yellow, Red
+- **Numeral Color**: White, Light Gray, Yellow, Cyan, Red
+- **Numeral Style**: Arabic or Roman numerals
+- **Preset Flavors**: Classic, Blue Ice, Matrix, Sunset
+
+## Building
+
+1. Open the project in Android Studio
+2. Build the APK: `./gradlew assembleDebug`
+3. Install on a connected Wear OS 5 device: `adb install app/build/outputs/apk/debug/app-debug.apk`
+
+## History
+
+This project was originally a Garmin Connect IQ watch face (Monkey C), ported to Wear OS using the Watch Face Format 2 declarative XML format. The original Garmin version was inspired by [Spotlight](https://play.google.com/store/apps/details?id=com.maize.spotlight) by Maize.
 
 ![animated watch face](images/animated_watch_face_small.gif)
-
-Get it from the [Garmin Connect IQ Store](https://apps.garmin.com/en-US/apps/b900b0b7-930c-4889-8878-bfae92a72b82)
-
-Use the [color configurator](https://nldroid.github.io/spotlight/) to experiment with different colors. The tool will give you the color codes that you can enter in the configuration app.
