@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.docwilco.spotlight"
-    compileSdk = 34
+    namespace = "net.drwilco.spotlight"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.docwilco.spotlight"
+        applicationId = "net.drwilco.spotlight"
         minSdk = 34
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
     }
