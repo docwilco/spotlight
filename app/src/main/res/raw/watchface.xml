@@ -514,179 +514,186 @@
                 </Line>
             </PartDraw>
 
-            <!-- Hour numerals -->
+            <!-- Hour numerals: hidden in ambient mode to prevent OLED burn-in.
+                 Uses alpha/Variant instead of renderMode for PartText compatibility. -->
             <ListConfiguration id="numeralStyle">
                 <ListOption id="0">
-                    <PartText x="602.0" y="120.6" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                1
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="740.4" y="259.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                2
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="791.0" y="448.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                3
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="740.4" y="637.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                4
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="602.0" y="775.4" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                5
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="413.0" y="826.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                6
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="224.0" y="775.4" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                7
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="85.6" y="637.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                8
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="35.0" y="448.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                9
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="85.6" y="259.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                10
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="224.0" y="120.6" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                11
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="413.0" y="70.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                12
-                            </Font>
-                        </Text>
-                    </PartText>
+                    <Group x="0" y="0" width="946" height="946">
+                        <Variant mode="AMBIENT" target="alpha" value="0" />
+                        <PartText x="602.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    1
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    2
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="791.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    3
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    4
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="602.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    5
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="826.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    6
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    7
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    8
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="35.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    9
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    10
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    11
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="70.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    12
+                                </Font>
+                            </Text>
+                        </PartText>
+                    </Group>
                 </ListOption>
                 <ListOption id="1">
-                    <PartText x="602.0" y="120.6" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                I
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="740.4" y="259.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                II
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="791.0" y="448.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                III
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="740.4" y="637.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                IV
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="602.0" y="775.4" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                V
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="413.0" y="826.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                VI
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="224.0" y="775.4" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                VII
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="85.6" y="637.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                VIII
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="35.0" y="448.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                IX
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="85.6" y="259.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                X
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="224.0" y="120.6" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                XI
-                            </Font>
-                        </Text>
-                    </PartText>
-                    <PartText x="413.0" y="70.0" width="120" height="50" renderMode="INTERACTIVE">
-                        <Text align="CENTER">
-                            <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
-                                XII
-                            </Font>
-                        </Text>
-                    </PartText>
+                    <Group x="0" y="0" width="946" height="946">
+                        <Variant mode="AMBIENT" target="alpha" value="0" />
+                        <PartText x="602.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    I
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    II
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="791.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    III
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    IV
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="602.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    V
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="826.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    VI
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    VII
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    VIII
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="35.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    IX
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    X
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    XI
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="70.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    XII
+                                </Font>
+                            </Text>
+                        </PartText>
+                    </Group>
                 </ListOption>
             </ListConfiguration>
 
