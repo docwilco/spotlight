@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WatchFace clipShape="CIRCLE" height="450" width="450">
+    <Metadata key="CLOCK_TYPE" value="ANALOG" />
+    <Metadata key="PREVIEW_TIME" value="10:08:32" />
+
+    <UserConfigurations>
+        <ColorConfiguration defaultValue="0" displayName="hour_line_color" id="hourLineColor">
+            <ColorOption colors="#ffff0000 #ffaa0000" displayName="color_red" id="0" />
+            <ColorOption colors="#ff4488ff #ff223388" displayName="color_blue" id="1" />
+            <ColorOption colors="#ff00cc66 #ff006633" displayName="color_green" id="2" />
+            <ColorOption colors="#ffffffff #ff808080" displayName="color_white" id="3" />
+            <ColorOption colors="#ffffff00 #ff808000" displayName="color_yellow" id="4" />
+            <ColorOption colors="#ff00ffff #ff008080" displayName="color_cyan" id="5" />
+            <ColorOption colors="#ffff00ff #ff800080" displayName="color_magenta" id="6" />
+            <ColorOption colors="#ffff8800 #ff884400" displayName="color_orange" id="7" />
+        </ColorConfiguration>
+        <ColorConfiguration defaultValue="0" displayName="hash_mark_color" id="hashMarkColor">
+            <ColorOption colors="#ffffffff #ff707070" displayName="color_white" id="0" />
+            <ColorOption colors="#ffc0c0c0 #ff606060" displayName="color_light_gray" id="1" />
+            <ColorOption colors="#ff4488ff #ff223366" displayName="color_blue" id="2" />
+            <ColorOption colors="#ff00cc66 #ff005533" displayName="color_green" id="3" />
+            <ColorOption colors="#ffffff00 #ff666600" displayName="color_yellow" id="4" />
+            <ColorOption colors="#ffff4444 #ff661a1a" displayName="color_red" id="5" />
+        </ColorConfiguration>
+        <ColorConfiguration defaultValue="0" displayName="numeral_color" id="numeralColor">
+            <ColorOption colors="#ffffffff #ff606060" displayName="color_white" id="0" />
+            <ColorOption colors="#ffc0c0c0 #ff505050" displayName="color_light_gray" id="1" />
+            <ColorOption colors="#ffffff00 #ff666600" displayName="color_yellow" id="2" />
+            <ColorOption colors="#ff00ffff #ff006666" displayName="color_cyan" id="3" />
+            <ColorOption colors="#ffff4444 #ff661a1a" displayName="color_red" id="4" />
+        </ColorConfiguration>
+        <ListConfiguration defaultValue="0" displayName="numeral_style" id="numeralStyle">
+            <ListOption displayName="style_arabic" id="0" />
+            <ListOption displayName="style_roman" id="1" />
+        </ListConfiguration>
+        <Flavors defaultValue="0">
+            <Flavor displayName="flavor_default" id="0">
+                <Configuration id="hourLineColor" optionId="0" />
+                <Configuration id="hashMarkColor" optionId="0" />
+                <Configuration id="numeralColor" optionId="0" />
+                <Configuration id="numeralStyle" optionId="0" />
+            </Flavor>
+            <Flavor displayName="flavor_blue" id="1">
+                <Configuration id="hourLineColor" optionId="1" />
+                <Configuration id="hashMarkColor" optionId="2" />
+                <Configuration id="numeralColor" optionId="3" />
+                <Configuration id="numeralStyle" optionId="0" />
+            </Flavor>
+            <Flavor displayName="flavor_green" id="2">
+                <Configuration id="hourLineColor" optionId="2" />
+                <Configuration id="hashMarkColor" optionId="3" />
+                <Configuration id="numeralColor" optionId="0" />
+                <Configuration id="numeralStyle" optionId="1" />
+            </Flavor>
+            <Flavor displayName="flavor_warm" id="3">
+                <Configuration id="hourLineColor" optionId="7" />
+                <Configuration id="hashMarkColor" optionId="4" />
+                <Configuration id="numeralColor" optionId="2" />
+                <Configuration id="numeralStyle" optionId="0" />
+            </Flavor>
+        </Flavors>
+    </UserConfigurations>
+
+    <Scene backgroundColor="#ff000000">
+
+        <!-- Virtual clock group: 946x946, translated for spotlight effect.
+             The virtual clock is 2.1x larger than the screen (zoom factor).
+             The sin/cos transform converts time to an angle in radians:
+               angle = total_seconds * 2π / 43200
+             covering one full revolution in 12 hours (43200 seconds).
+             The focal point (0.8 * clock_radius = 378) follows the hour
+             hand position, creating the spotlight panning effect. -->
+        <Group x="0" y="0" width="946" height="946">
+            <Transform target="x" value="-248.0 - 378.0 * sin(([HOUR_0_11] * 3600 + [MINUTE] * 60 + [SECOND]) * 2 * 3.14159265358979 / 43200)" />
+            <Transform target="y" value="-248.0 + 378.0 * cos(([HOUR_0_11] * 3600 + [MINUTE] * 60 + [SECOND]) * 2 * 3.14159265358979 / 43200)" />
+
+            <!-- Interactive mode hash marks -->
+            <PartDraw x="0" y="0" width="946" height="946" renderMode="INTERACTIVE">
+                <Line startX="473.0" startY="0.5" endX="473.0" endY="47.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="514.2" startY="2.3" endX="513.2" endY="14.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="555.0" startY="7.7" endX="553.0" endY="19.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="595.3" startY="16.6" endX="589.2" endY="39.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="634.6" startY="29.0" endX="630.6" endY="40.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="672.7" startY="44.8" endX="667.7" endY="55.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="709.2" startY="63.8" endX="685.6" endY="104.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="744.0" startY="86.0" endX="737.2" endY="95.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="776.7" startY="111.0" endX="769.1" endY="120.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="807.1" startY="138.9" endX="790.4" endY="155.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="835.0" startY="169.3" endX="825.9" endY="176.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="860.0" startY="202.0" endX="850.4" endY="208.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="882.2" startY="236.7" endX="841.3" endY="260.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="901.2" startY="273.3" endX="890.5" endY="278.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="917.0" startY="311.4" endX="905.9" endY="315.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="929.4" startY="350.7" endX="906.6" endY="356.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="938.3" startY="391.0" endX="926.7" endY="393.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="943.7" startY="431.8" endX="931.9" endY="432.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="945.5" startY="473.0" endX="898.2" endY="473.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="943.7" startY="514.2" endX="931.9" endY="513.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="938.3" startY="555.0" endX="926.7" endY="553.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="929.4" startY="595.3" endX="906.6" endY="589.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="917.0" startY="634.6" endX="905.9" endY="630.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="901.2" startY="672.7" endX="890.5" endY="667.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="882.2" startY="709.2" endX="841.3" endY="685.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="860.0" startY="744.0" endX="850.4" endY="737.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="835.0" startY="776.7" endX="825.9" endY="769.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="807.1" startY="807.1" endX="790.4" endY="790.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="776.7" startY="835.0" endX="769.1" endY="825.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="744.0" startY="860.0" endX="737.2" endY="850.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="709.2" startY="882.2" endX="685.6" endY="841.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="672.7" startY="901.2" endX="667.7" endY="890.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="634.6" startY="917.0" endX="630.6" endY="905.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="595.3" startY="929.4" endX="589.2" endY="906.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="555.0" startY="938.3" endX="553.0" endY="926.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="514.2" startY="943.7" endX="513.2" endY="931.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="473.0" startY="945.5" endX="473.0" endY="898.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="431.8" startY="943.7" endX="432.8" endY="931.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="391.0" startY="938.3" endX="393.0" endY="926.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="350.7" startY="929.4" endX="356.8" endY="906.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="311.4" startY="917.0" endX="315.4" endY="905.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="273.3" startY="901.2" endX="278.3" endY="890.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="236.7" startY="882.2" endX="260.4" endY="841.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="202.0" startY="860.0" endX="208.8" endY="850.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="169.3" startY="835.0" endX="176.9" endY="825.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="138.9" startY="807.1" endX="155.6" endY="790.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="111.0" startY="776.7" endX="120.1" endY="769.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="86.0" startY="744.0" endX="95.6" endY="737.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="63.8" startY="709.3" endX="104.7" endY="685.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="44.8" startY="672.7" endX="55.5" endY="667.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="29.0" startY="634.6" endX="40.1" endY="630.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="16.6" startY="595.3" endX="39.4" endY="589.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="7.7" startY="555.0" endX="19.3" endY="553.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="2.3" startY="514.2" endX="14.1" endY="513.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="0.5" startY="473.0" endX="47.8" endY="473.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="2.3" startY="431.8" endX="14.1" endY="432.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="7.7" startY="391.0" endX="19.3" endY="393.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="16.6" startY="350.7" endX="39.4" endY="356.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="29.0" startY="311.4" endX="40.1" endY="315.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="44.8" startY="273.3" endX="55.5" endY="278.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="63.8" startY="236.7" endX="104.7" endY="260.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="86.0" startY="202.0" endX="95.6" endY="208.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="111.0" startY="169.3" endX="120.1" endY="176.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="138.9" startY="138.9" endX="155.6" endY="155.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="169.3" startY="111.0" endX="176.9" endY="120.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="202.0" startY="86.0" endX="208.8" endY="95.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="236.7" startY="63.8" endX="260.4" endY="104.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="273.3" startY="44.8" endX="278.3" endY="55.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="311.4" startY="29.0" endX="315.4" endY="40.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="350.7" startY="16.6" endX="356.8" endY="39.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="391.0" startY="7.7" endX="393.0" endY="19.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="431.8" startY="2.3" endX="432.8" endY="14.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.0]" cap="ROUND" thickness="1" />
+                </Line>
+            </PartDraw>
+
+            <!-- Ambient mode hash marks (dimmer colors) -->
+            <PartDraw x="0" y="0" width="946" height="946" renderMode="AMBIENT">
+                <Line startX="473.0" startY="0.5" endX="473.0" endY="47.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="514.2" startY="2.3" endX="513.2" endY="14.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="555.0" startY="7.7" endX="553.0" endY="19.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="595.3" startY="16.6" endX="589.2" endY="39.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="634.6" startY="29.0" endX="630.6" endY="40.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="672.7" startY="44.8" endX="667.7" endY="55.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="709.2" startY="63.8" endX="685.6" endY="104.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="744.0" startY="86.0" endX="737.2" endY="95.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="776.7" startY="111.0" endX="769.1" endY="120.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="807.1" startY="138.9" endX="790.4" endY="155.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="835.0" startY="169.3" endX="825.9" endY="176.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="860.0" startY="202.0" endX="850.4" endY="208.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="882.2" startY="236.7" endX="841.3" endY="260.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="901.2" startY="273.3" endX="890.5" endY="278.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="917.0" startY="311.4" endX="905.9" endY="315.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="929.4" startY="350.7" endX="906.6" endY="356.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="938.3" startY="391.0" endX="926.7" endY="393.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="943.7" startY="431.8" endX="931.9" endY="432.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="945.5" startY="473.0" endX="898.2" endY="473.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="943.7" startY="514.2" endX="931.9" endY="513.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="938.3" startY="555.0" endX="926.7" endY="553.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="929.4" startY="595.3" endX="906.6" endY="589.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="917.0" startY="634.6" endX="905.9" endY="630.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="901.2" startY="672.7" endX="890.5" endY="667.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="882.2" startY="709.2" endX="841.3" endY="685.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="860.0" startY="744.0" endX="850.4" endY="737.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="835.0" startY="776.7" endX="825.9" endY="769.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="807.1" startY="807.1" endX="790.4" endY="790.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="776.7" startY="835.0" endX="769.1" endY="825.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="744.0" startY="860.0" endX="737.2" endY="850.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="709.2" startY="882.2" endX="685.6" endY="841.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="672.7" startY="901.2" endX="667.7" endY="890.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="634.6" startY="917.0" endX="630.6" endY="905.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="595.3" startY="929.4" endX="589.2" endY="906.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="555.0" startY="938.3" endX="553.0" endY="926.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="514.2" startY="943.7" endX="513.2" endY="931.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="473.0" startY="945.5" endX="473.0" endY="898.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="431.8" startY="943.7" endX="432.8" endY="931.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="391.0" startY="938.3" endX="393.0" endY="926.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="350.7" startY="929.4" endX="356.8" endY="906.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="311.4" startY="917.0" endX="315.4" endY="905.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="273.3" startY="901.2" endX="278.3" endY="890.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="236.7" startY="882.2" endX="260.4" endY="841.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="202.0" startY="860.0" endX="208.8" endY="850.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="169.3" startY="835.0" endX="176.9" endY="825.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="138.9" startY="807.1" endX="155.6" endY="790.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="111.0" startY="776.7" endX="120.1" endY="769.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="86.0" startY="744.0" endX="95.6" endY="737.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="63.8" startY="709.3" endX="104.7" endY="685.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="44.8" startY="672.7" endX="55.5" endY="667.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="29.0" startY="634.6" endX="40.1" endY="630.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="16.6" startY="595.3" endX="39.4" endY="589.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="7.7" startY="555.0" endX="19.3" endY="553.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="2.3" startY="514.2" endX="14.1" endY="513.2">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="0.5" startY="473.0" endX="47.8" endY="473.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="2.3" startY="431.8" endX="14.1" endY="432.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="7.7" startY="391.0" endX="19.3" endY="393.0">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="16.6" startY="350.7" endX="39.4" endY="356.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="29.0" startY="311.4" endX="40.1" endY="315.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="44.8" startY="273.3" endX="55.5" endY="278.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="63.8" startY="236.7" endX="104.7" endY="260.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="86.0" startY="202.0" endX="95.6" endY="208.8">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="111.0" startY="169.3" endX="120.1" endY="176.9">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="138.9" startY="138.9" endX="155.6" endY="155.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="169.3" startY="111.0" endX="176.9" endY="120.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="202.0" startY="86.0" endX="208.8" endY="95.6">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="236.7" startY="63.8" endX="260.4" endY="104.7">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="3" />
+                </Line>
+                <Line startX="273.3" startY="44.8" endX="278.3" endY="55.5">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="311.4" startY="29.0" endX="315.4" endY="40.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="350.7" startY="16.6" endX="356.8" endY="39.4">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="2" />
+                </Line>
+                <Line startX="391.0" startY="7.7" endX="393.0" endY="19.3">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="431.8" startY="2.3" endX="432.8" endY="14.1">
+                    <Stroke color="[CONFIGURATION.hashMarkColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+            </PartDraw>
+
+            <!-- Hour numerals: hidden in ambient mode to prevent OLED burn-in.
+                 Uses alpha/Variant instead of renderMode for PartText compatibility. -->
+            <ListConfiguration id="numeralStyle">
+                <ListOption id="0">
+                    <Group x="0" y="0" width="946" height="946">
+                        <Variant mode="AMBIENT" target="alpha" value="0" />
+                        <PartText x="602.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    1
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    2
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="791.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    3
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    4
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="602.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    5
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="826.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    6
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    7
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    8
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="35.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    9
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    10
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    11
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="70.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="36" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    12
+                                </Font>
+                            </Text>
+                        </PartText>
+                    </Group>
+                </ListOption>
+                <ListOption id="1">
+                    <Group x="0" y="0" width="946" height="946">
+                        <Variant mode="AMBIENT" target="alpha" value="0" />
+                        <PartText x="602.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    I
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    II
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="791.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    III
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="740.4" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    IV
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="602.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    V
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="826.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    VI
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="775.4" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    VII
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="637.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    VIII
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="35.0" y="448.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    IX
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="85.6" y="259.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    X
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="224.0" y="120.6" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    XI
+                                </Font>
+                            </Text>
+                        </PartText>
+                        <PartText x="413.0" y="70.0" width="120" height="50">
+                            <Text align="CENTER">
+                                <Font family="SYNC_TO_DEVICE" size="30" color="[CONFIGURATION.numeralColor.0]" weight="NORMAL">
+                                    XII
+                                </Font>
+                            </Text>
+                        </PartText>
+                    </Group>
+                </ListOption>
+            </ListConfiguration>
+
+        </Group>
+
+        <!-- Hour line: rotated through center of screen -->
+        <Group x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+            <Transform target="angle" value="([HOUR_0_11] * 3600 + [MINUTE] * 60 + [SECOND]) / 120" />
+            <PartDraw x="0" y="0" width="450" height="450" renderMode="INTERACTIVE">
+                <Line startX="225.0" startY="0" endX="225.0" endY="450">
+                    <Stroke color="[CONFIGURATION.hourLineColor.0]" cap="ROUND" thickness="2" />
+                </Line>
+            </PartDraw>
+            <PartDraw x="0" y="0" width="450" height="450" renderMode="AMBIENT">
+                <Line startX="225.0" startY="0" endX="225.0" endY="112">
+                    <Stroke color="[CONFIGURATION.hourLineColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+                <Line startX="225.0" startY="337" endX="225.0" endY="450">
+                    <Stroke color="[CONFIGURATION.hourLineColor.1]" cap="ROUND" thickness="1" />
+                </Line>
+            </PartDraw>
+        </Group>
+
+    </Scene>
+</WatchFace>

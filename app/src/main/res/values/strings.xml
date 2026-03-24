@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spotlight</string>
+    <string name="hour_line_color">Hour Line Color</string>
+    <string name="hash_mark_color">Hash Mark Color</string>
+    <string name="numeral_color">Numeral Color</string>
+    <string name="numeral_style">Numeral Style</string>
+    <string name="color_red">Red</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_green">Green</string>
+    <string name="color_white">White</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_magenta">Magenta</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_light_gray">Light Gray</string>
+    <string name="style_arabic">Arabic</string>
+    <string name="style_roman">Roman</string>
+    <string name="flavor_default">Classic</string>
+    <string name="flavor_blue">Blue Ice</string>
+    <string name="flavor_green">Matrix</string>
+    <string name="flavor_warm">Sunset</string>
+</resources>
